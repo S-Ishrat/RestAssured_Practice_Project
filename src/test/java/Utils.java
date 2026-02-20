@@ -12,4 +12,8 @@ public class Utils {
 
 
     }
+    public static int generateRandomNumber(int min,int max){
+        double randomNum=Math.random()*(max-min)+min;
+        return (int) randomNum;
+    }
 }
