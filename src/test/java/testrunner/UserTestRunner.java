@@ -1,15 +1,27 @@
-import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonBooleanFormatVisitor;
+package testrunner;
+
 import com.github.javafaker.Faker;
+import config.Setup;
+import config.UserModel;
+import controller.UserController;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.apache.commons.configuration.ConfigurationException;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import utils.Utils;
 
 public class UserTestRunner extends Setup {
+    UserController userController;
+    @BeforeClass
+    public void myUserControll(){
+        userController=new UserController(prop);
+    }
     @Test (priority = 1,description = "user can login")
     public void doLogin() throws ConfigurationException {
-        UserController userController=new UserController(prop);
+        //UserController userController=new UserController(prop);
         UserModel userModel=new UserModel();
         userModel.setEmail("admin@dmoney.com");
         userModel.setPassword("1234");
